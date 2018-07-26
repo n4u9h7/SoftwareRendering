@@ -2,7 +2,7 @@
 #include "cColor.h"
 
 cColor::cColor()
-: r( 255 ), g( 255 ), b( 255 )
+: r( 255 ), g( 255 ), b( 253 )
 {
 }
 
