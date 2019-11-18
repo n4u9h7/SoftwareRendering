@@ -13,6 +13,7 @@ public:
 	void	DrawPixel( int x, int y );
 	void 	DrawLineDDA( int startX, int startY, int endX, int endY );
 	void	DrawRectangle( int startX, int startY, int endX, int endY );
+	void	DrawBresenhamsLine( int startX, int startY, int endX, int endY );
 	
 private:
 	cColor	m_Color;

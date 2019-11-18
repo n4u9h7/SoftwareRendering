@@ -51,7 +51,7 @@ WPARAM cGameManager::MessageLoop( void )
 {
 	MSG Message;
 	
-		while( true )
+	while( true )
 	{
 		if( PeekMessage( &Message, NULL, 0, 0, PM_REMOVE ) )
 		{
@@ -141,7 +141,8 @@ void cGameManager::MouseMoveProcess( int x, int y )
 		}
 		else if( m_drawType == DRAW_DDA_LINE )	
 		{
-			m_Pixel->DrawLineDDA( m_startX, m_startY, x, y );
+			//m_Pixel->DrawLineDDA( m_startX, m_startY, x, y );
+			m_Pixel->DrawBresenhamsLine( m_startX, m_startY, x, y );
 		}
 	}
 }
