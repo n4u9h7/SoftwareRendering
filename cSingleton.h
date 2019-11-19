@@ -1,14 +1,14 @@
 #pragma once
 
 // 복사 방지 추가 매크로
-#define COPYPREVENT(type)				\
-	type(const type& rhw);				\
-	type& operator=( const type& rhw );
+#define COPYPREVENT(type)					\
+		type(const type& rhw);				\
+		type& operator=( const type& rhw );
 
 // 싱글톤 매크로
 #define SINGLETON(type)					\
-	COPYPREVENT(type)					\
-	friend cSingleton<type>;
+		COPYPREVENT(type)				\
+		friend cSingleton<type>;
 	
 template < typename T >
 class cSingleton

@@ -90,21 +90,23 @@ void cPixel::DrawRectangle( int startX, int startY, int endX, int endY )
 void cPixel::DrawBresenhamsLine( int startX, int startY, int endX, int endY )
 {
 	//## First attempt
- 	/*for( float t = 0.; t < 1.; t+= .01 )
+ 	for( float t = 0.0f; t < 1.0f; t+= 0.01f )
  	{
- 		int x = startX + ( endX - startX ) * t;
- 		int y = startY + ( endY - startY ) * t;
+ 		int x = ( int )( startX + ( endX - startX ) * t );
+ 		int y = ( int )( startY + ( endY - startY ) * t );
  
  		DrawPixel( x, y );
- 	}*/
+ 	}
 
 	//## Second attempt
-	for( int x = startX; x <= endX; x++ )
-	{
-		float t = ( x - startX ) / ( float )( endX - startX );
-		int y = startY * ( 1.0f - t ) + endY * t;
-
-		DrawPixel( x, y );
-	}
+// 	for( int x = startX; x <= endX; x++ )
+// 	{
+// 		float t = ( x - startX ) / ( float )( endX - startX );
+// 		int y = (int)( startY * ( 1.0f - t ) + endY * t );
+// 
+// 		DrawPixel( x, y );
+// 
+// 		TRACE( "x : %d, y : %d\n", x, y );
+// 	}
 
 }

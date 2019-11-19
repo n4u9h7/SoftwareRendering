@@ -17,3 +17,6 @@
 
 // 디파인 
 #include "defines.h"
+
+// 유틸리티
+#include "Utility.h"
