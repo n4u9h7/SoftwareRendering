@@ -11,6 +11,7 @@
 #include <list>
 #include <map>
 #include <algorithm>
+#include <cmath>
 
 // 윈도우 헤더파일 
 #include <windows.h>

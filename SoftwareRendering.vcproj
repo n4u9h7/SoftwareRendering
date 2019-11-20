@@ -175,71 +175,93 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\cColor.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\cColor.h"
-				>
-			</File>
-			<File
-				RelativePath=".\cDIBSection.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\cDIBSection.h"
-				>
-			</File>
-			<File
-				RelativePath=".\cGameManager.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\cGameManager.h"
-				>
-			</File>
-			<File
-				RelativePath=".\cPixel.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\cPixel.h"
-				>
-			</File>
-			<File
-				RelativePath=".\cSingleton.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\cSingleton.h"
-				>
-			</File>
-			<File
 				RelativePath=".\defines.h"
-				>
-			</File>
-			<File
-				RelativePath=".\main.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\stdafx.h"
 				>
 			</File>
-			<File
-				RelativePath=".\Utility.cpp"
+			<Filter
+				Name="Graphic"
 				>
-			</File>
-			<File
-				RelativePath=".\Utility.h"
+				<File
+					RelativePath=".\cColor.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\cColor.h"
+					>
+				</File>
+				<File
+					RelativePath=".\cDIBSection.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\cDIBSection.h"
+					>
+				</File>
+				<File
+					RelativePath=".\cPixel.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\cPixel.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Manager"
 				>
-			</File>
-		</Filter>
-		<Filter
-			Name="헤더 파일"
-			Filter="h;hpp;hxx;hm;inl;inc;xsd"
-			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
-			>
+				<File
+					RelativePath=".\cGameManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\cGameManager.h"
+					>
+				</File>
+				<File
+					RelativePath=".\cSingleton.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\cSingleton.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Device"
+				>
+				<File
+					RelativePath=".\main.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Util"
+				>
+				<File
+					RelativePath=".\Utility.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Utility.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Math"
+				>
+				<File
+					RelativePath=".\cVector.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\cVector.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="리소스 파일"

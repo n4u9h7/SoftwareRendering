@@ -314,14 +314,14 @@ void cPixel::DrawBresenhamsLine( int startX, int startY, int endX, int endY )
 
 void cPixel::DrawBresenhamsLine2( int startX, int startY, int endX, int endY )
 {
-	bool steep = false;
+	bool bSteep = false;
 
 	if( Abs( startX - endX ) < Abs( startY - endY ) )
 	{
 		SWAP( startX, startY );
 		SWAP( endX, endY );
 
-		steep = true;
+		bSteep = true;
 	}
 
 	if( startX > endX )
@@ -338,7 +338,7 @@ void cPixel::DrawBresenhamsLine2( int startX, int startY, int endX, int endY )
 
 	for( int x = startX; x <= endX; x++ )
 	{
-		if( steep == TRUE )
+		if( bSteep == TRUE )
 		{
 			DrawPixel( y, x );
 		}
