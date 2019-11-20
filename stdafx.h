@@ -21,3 +21,6 @@
 
 // 유틸리티
 #include "Utility.h"
+
+// 수학
+#include "cVector.h"
