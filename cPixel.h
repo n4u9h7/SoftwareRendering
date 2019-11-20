@@ -14,6 +14,7 @@ public:
 	void 	DrawLineDDA( int startX, int startY, int endX, int endY );
 	void	DrawRectangle( int startX, int startY, int endX, int endY );
 	void	DrawBresenhamsLine( int startX, int startY, int endX, int endY );
+	void	DrawBresenhamsLine2( int startX, int startY, int endX, int endY );
 	
 private:
 	cColor	m_Color;

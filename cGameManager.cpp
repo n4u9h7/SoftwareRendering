@@ -2,7 +2,7 @@
 #include "cGameManager.h"
 
 cGameManager::cGameManager()
-: m_mainWnd( NULL ), m_mainInstance( NULL ), m_Pixel( NULL ), m_drawType( DRAW_DDA_LINE ),
+: m_mainWnd( NULL ), m_mainInstance( NULL ), m_Pixel( NULL ), m_drawType( DRAW_BRE_LINE ),
   m_startX( 0 ), m_startY( 0 )
 {
 	
@@ -158,7 +158,7 @@ void cGameManager::MouseMoveProcess( int x, int y )
 		else if( m_drawType == DRAW_BRE_LINE )
 		{
 			m_Pixel->SetColor( cColor( 255, 0, 255 ) );
-			m_Pixel->DrawBresenhamsLine( m_startX, m_startY, x, y );
+			m_Pixel->DrawBresenhamsLine2( m_startX, m_startY, x, y );
 		}
 	}
 }
