@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "cPixel.h"
+#include "Pixel.h"
 
-cPixel::cPixel( int width, int height, UINT bytesPerScanline, UINT bytesPerPixel, BYTE* pBits )
+Pixel::Pixel( int width, int height, UINT bytesPerScanline, UINT bytesPerPixel, BYTE* pBits )
 : m_Color( 255, 255, 255 )
 {
 	m_width = width;
@@ -11,11 +11,11 @@ cPixel::cPixel( int width, int height, UINT bytesPerScanline, UINT bytesPerPixel
 	m_pBits = pBits;
 }
 
-cPixel::~cPixel()
+Pixel::~Pixel()
 {
 }
 	
-void cPixel::DrawPixel( int x, int y )
+void Pixel::DrawPixel( int x, int y )
 {
 	int offset = ( y * m_bytesPerScanline ) + ( x * m_bytesPerPixel );
 	int maxOffset = m_bytesPerScanline * ( m_height - 1 ) + ( m_width - 1 ) * m_bytesPerPixel;
@@ -30,7 +30,7 @@ void cPixel::DrawPixel( int x, int y )
 	*(m_pBits + offset + 2) = m_Color.GetR();
 }
 
-void cPixel::DrawLineDDA( int startX, int startY, int endX, int endY )
+void Pixel::DrawLineDDA( int startX, int startY, int endX, int endY )
 {
 	if ((startX == endX) && (startY == endY)) return;
 
@@ -82,12 +82,12 @@ void cPixel::DrawLineDDA( int startX, int startY, int endX, int endY )
 	}
 }
 
-void cPixel::DrawRectangle( int startX, int startY, int endX, int endY )
+void Pixel::DrawRectangle( int startX, int startY, int endX, int endY )
 {
 	if( ( startX == endX ) && ( startY == endY ) ) return;
 }
 
-void cPixel::DrawBresenhamsLine( int startX, int startY, int endX, int endY )
+void Pixel::DrawBresenhamsLine( int startX, int startY, int endX, int endY )
 {
 	int x = startX;	
 	int y = startY;	
@@ -312,7 +312,7 @@ void cPixel::DrawBresenhamsLine( int startX, int startY, int endX, int endY )
 	}
 }
 
-void cPixel::DrawBresenhamsLine2( int startX, int startY, int endX, int endY )
+void Pixel::DrawBresenhamsLine2( int startX, int startY, int endX, int endY )
 {
 	bool bSteep = false;
 

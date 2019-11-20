@@ -25,13 +25,13 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // 매니저 관련
-#include "cGameManager.h"
-#include "cDIBSection.h"
-#include "cPixel.h"
+#include "GameManager.h"
+#include "DIBSection.h"
+#include "Pixel.h"
 
-#define GAME_MGR	cSingleton<cGameManager>::GetInstance()
-#define RENDER_MGR	cSingleton<cDIBSection>::GetInstance()
-#define PIXEL_MGR	cSingleton<cPixel>::GetInstance()
+#define GAME_MGR	Singleton<GameManager>::GetInstance()
+#define RENDER_MGR	Singleton<DIBSection>::GetInstance()
+#define PIXEL_MGR	Singleton<Pixel>::GetInstance()
  
  ////////////////////////////////////////////////////////////////////////////////////////////////
  // 기타 공용 사용 헤더 

@@ -1,15 +1,15 @@
 #ifndef __PIXEL__
 #define	__PIXEL__
 
-#include "cColor.h"
+#include "Color.h"
 
-class cPixel
+class Pixel
 {
 public:
-	cPixel( int width, int height, UINT bytesPerScanline, UINT bytesPerPixel, BYTE* pBits );
-	~cPixel();
+	Pixel( int width, int height, UINT bytesPerScanline, UINT bytesPerPixel, BYTE* pBits );
+	~Pixel();
 	
-	void	SetColor( cColor Color ) { m_Color = Color; }
+	void	SetColor( Color Color ) { m_Color = Color; }
 	void	DrawPixel( int x, int y );
 	void 	DrawLineDDA( int startX, int startY, int endX, int endY );
 	void	DrawRectangle( int startX, int startY, int endX, int endY );
@@ -17,7 +17,7 @@ public:
 	void	DrawBresenhamsLine2( int startX, int startY, int endX, int endY );
 	
 private:
-	cColor	m_Color;
+	Color	m_Color;
 	
 	int		m_width;
 	int		m_height;

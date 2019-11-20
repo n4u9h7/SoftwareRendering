@@ -1,11 +1,11 @@
 #ifndef __GAMEMANAGER__
 #define __GAMEMANAGER__
 
-#include "cSingleton.h"
-#include "cDIBSection.h"
-#include "cPixel.h"
+#include "Singleton.h"
+#include "DIBSection.h"
+#include "Pixel.h"
 
-class cGameManager
+class GameManager
 {
 public:
 	bool		Initialize( HWND hWnd, HINSTANCE hInstance );
@@ -18,10 +18,10 @@ public:
 	HINSTANCE	GetInst( void );
 		
 private:
-	cGameManager();
-	~cGameManager();
+	GameManager();
+	~GameManager();
 	
-	SINGLETON( cGameManager );
+	SINGLETON( GameManager );
 	
 	void		LButtonDownProcess( int x, int y );
 	void		MouseMoveProcess( int x, int y );
@@ -46,7 +46,7 @@ private:
 	HWND		m_mainWnd;
 	HINSTANCE	m_mainInstance;
 	
-	cPixel*		m_Pixel;
+	Pixel*		m_Pixel;
 
 	int			m_drawType;
 	int			m_drawState;
@@ -54,7 +54,7 @@ private:
 	int			m_startY;
 };
 
-inline HWND 		cGameManager::GetWnd( void )	{ return m_mainWnd; }
-inline HINSTANCE	cGameManager::GetInst( void )	{ return m_mainInstance; }
+inline HWND 		GameManager::GetWnd( void )	{ return m_mainWnd; }
+inline HINSTANCE	GameManager::GetInst( void )	{ return m_mainInstance; }
 
 #endif

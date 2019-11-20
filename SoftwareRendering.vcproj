@@ -186,27 +186,27 @@
 				Name="Graphic"
 				>
 				<File
-					RelativePath=".\cColor.cpp"
+					RelativePath=".\Color.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\cColor.h"
+					RelativePath=".\Color.h"
 					>
 				</File>
 				<File
-					RelativePath=".\cDIBSection.cpp"
+					RelativePath=".\DIBSection.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\cDIBSection.h"
+					RelativePath=".\DIBSection.h"
 					>
 				</File>
 				<File
-					RelativePath=".\cPixel.cpp"
+					RelativePath=".\Pixel.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\cPixel.h"
+					RelativePath=".\Pixel.h"
 					>
 				</File>
 			</Filter>
@@ -214,19 +214,19 @@
 				Name="Manager"
 				>
 				<File
-					RelativePath=".\cGameManager.cpp"
+					RelativePath=".\GameManager.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\cGameManager.h"
+					RelativePath=".\GameManager.h"
 					>
 				</File>
 				<File
-					RelativePath=".\cSingleton.cpp"
+					RelativePath=".\Singleton.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\cSingleton.h"
+					RelativePath=".\Singleton.h"
 					>
 				</File>
 			</Filter>
@@ -254,11 +254,11 @@
 				Name="Math"
 				>
 				<File
-					RelativePath=".\cVector.cpp"
+					RelativePath=".\Vector3.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\cVector.h"
+					RelativePath=".\Vector3.h"
 					>
 				</File>
 			</Filter>

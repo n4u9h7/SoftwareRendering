@@ -8,17 +8,17 @@
 // 싱글톤 매크로
 #define SINGLETON(type)					\
 		COPYPREVENT(type)				\
-		friend cSingleton<type>;
+		friend Singleton<type>;
 	
 template < typename T >
-class cSingleton
+class Singleton
 {
 private:
-	cSingleton( void ) {}
-	virtual ~cSingleton( void ) {}
+	Singleton( void ) {}
+	virtual ~Singleton( void ) {}
 	
 	// 복사 생성자 및 대입연산에 대한 방지 매크로 
-	COPYPREVENT( cSingleton );
+	COPYPREVENT( Singleton );
 	
 public:
 	// 인스턴스 가져오기
@@ -27,7 +27,7 @@ public:
 
 // 인스턴스 가져오기
 template < typename T >
-T* cSingleton<T>::GetInstance( void )
+T* Singleton<T>::GetInstance( void )
 {
 	static T instance;
 	return& instance;

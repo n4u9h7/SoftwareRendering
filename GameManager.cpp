@@ -1,19 +1,19 @@
 #include "stdafx.h"
-#include "cGameManager.h"
+#include "GameManager.h"
 
-cGameManager::cGameManager()
+GameManager::GameManager()
 : m_mainWnd( NULL ), m_mainInstance( NULL ), m_Pixel( NULL ), m_drawType( DRAW_BRE_LINE ),
   m_startX( 0 ), m_startY( 0 )
 {
 	
 }
 
-cGameManager::~cGameManager()
+GameManager::~GameManager()
 {
 	Release();
 }
 
-bool cGameManager::Initialize( HWND hWnd, HINSTANCE hInstance )
+bool GameManager::Initialize( HWND hWnd, HINSTANCE hInstance )
 {
 	if( hWnd == NULL || hInstance == NULL )
 	{
@@ -28,7 +28,7 @@ bool cGameManager::Initialize( HWND hWnd, HINSTANCE hInstance )
 		return false;
 	}
 	
-	m_Pixel = new cPixel( WIN_SIZE_X, WIN_SIZE_Y, RENDER_MGR->GetBytesPerScanline(), RENDER_MGR->GetBytesPerPixel(), RENDER_MGR->GetBits() );
+	m_Pixel = new Pixel( WIN_SIZE_X, WIN_SIZE_Y, RENDER_MGR->GetBytesPerScanline(), RENDER_MGR->GetBytesPerPixel(), RENDER_MGR->GetBits() );
 		
 //	SetTimer( m_mainWnd, 1, 10, NULL );
 	
@@ -37,17 +37,17 @@ bool cGameManager::Initialize( HWND hWnd, HINSTANCE hInstance )
 	return true;
 }
 
-void cGameManager::Update( void )
+void GameManager::Update( void )
 {
 	//InvalidateRect( m_mainWnd, NULL, FALSE );
 }
 
-void cGameManager::Render()
+void GameManager::Render()
 {
 	RENDER_MGR->Draw();
 }
 
-WPARAM cGameManager::MessageLoop( void )
+WPARAM GameManager::MessageLoop( void )
 {
 	MSG Message;
 	
@@ -72,7 +72,7 @@ WPARAM cGameManager::MessageLoop( void )
 	return Message.wParam;
 }
 
-LRESULT cGameManager::MainProc( HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam )
+LRESULT GameManager::MainProc( HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam )
 {
     switch( iMessage )
     {
@@ -116,7 +116,7 @@ LRESULT cGameManager::MainProc( HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM 
 	return ( DefWindowProc( hWnd, iMessage, wParam, lParam ) );
 }
 
-void cGameManager::LButtonDownProcess( int x, int y )
+void GameManager::LButtonDownProcess( int x, int y )
 {
 	if( m_drawState == DRAW_NONE ) 
 	{
@@ -139,7 +139,7 @@ void cGameManager::LButtonDownProcess( int x, int y )
 	m_drawState = DRAW_LBTN_DOWN;
 }
 
-void cGameManager::MouseMoveProcess( int x, int y )
+void GameManager::MouseMoveProcess( int x, int y )
 {
 	RENDER_MGR->DrawTempToMemory();
 	
@@ -152,24 +152,24 @@ void cGameManager::MouseMoveProcess( int x, int y )
 		}
 		else if( m_drawType == DRAW_DDA_LINE )	
 		{
-			m_Pixel->SetColor( cColor( 255, 255, 0 ) );
+			m_Pixel->SetColor( Color( 255, 255, 0 ) );
 			m_Pixel->DrawLineDDA( m_startX, m_startY, x, y );
 		}
 		else if( m_drawType == DRAW_BRE_LINE )
 		{
-			m_Pixel->SetColor( cColor( 255, 0, 255 ) );
+			m_Pixel->SetColor( Color( 255, 0, 255 ) );
 			m_Pixel->DrawBresenhamsLine2( m_startX, m_startY, x, y );
 		}
 	}
 }
 
-void cGameManager::LButtonUpProcess( int x, int y )
+void GameManager::LButtonUpProcess( int x, int y )
 {
 	m_drawState = DRAW_NONE;
 	
 	RENDER_MGR->DrawMemoryToTemp();
 }
 
-void cGameManager::Release( void )
+void GameManager::Release( void )
 {
 }

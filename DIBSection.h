@@ -1,19 +1,19 @@
 #ifndef __DIBSECTION__
 #define __DIBSECTION__
 
-#include "cSingleton.h"
-#include "cColor.h"
+#include "Singleton.h"
+#include "Color.h"
 
 static const UINT BYTES_PER_PIXEL	= 3;					// RGB
 static const UINT BITS_PER_PIXEL 	= 8 * BYTES_PER_PIXEL;	// 8bit * 3color(RGB)
 
-class cDIBSection
+class DIBSection
 {
 private:
-	cDIBSection();
-	~cDIBSection();
+	DIBSection();
+	~DIBSection();
 	
-	SINGLETON( cDIBSection );
+	SINGLETON( DIBSection );
 	
 public:
 	bool		Initialize( HWND hWnd, HINSTANCE hInstance );
@@ -49,7 +49,7 @@ private:
 	HWND		m_hWnd;
 	HINSTANCE	m_hInstance;
 	
-	cColor		m_Color;
+	Color		m_Color;
 };
 
 #endif

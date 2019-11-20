@@ -1,5 +1,5 @@
-#ifndef __VECTOR__
-#define __VECTOR__
+#ifndef __VECTOR3__
+#define __VECTOR3__
 
 class Vector3
 {

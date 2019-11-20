@@ -1,18 +1,18 @@
 #include "stdafx.h"
-#include "cDIBSection.h"
+#include "DIBSection.h"
 
-cDIBSection::cDIBSection()
+DIBSection::DIBSection()
 : m_hWnd( NULL ), m_hInstance( NULL ), m_mainDC( NULL ), m_memoryDC( NULL ), 
   m_DIBitmap( NULL ), m_pBits( NULL ), m_bytesPerScanline( 0 ), m_Color( 0, 0, 0 )
 {
 }
 
-cDIBSection::~cDIBSection()
+DIBSection::~DIBSection()
 {
 	Release();
 }
 
-bool cDIBSection::Initialize( HWND hWnd, HINSTANCE hInstance )
+bool DIBSection::Initialize( HWND hWnd, HINSTANCE hInstance )
 {
 	if( hWnd == NULL || hInstance == NULL ) return false;
 	
@@ -46,22 +46,22 @@ bool cDIBSection::Initialize( HWND hWnd, HINSTANCE hInstance )
 	return true;
 }
 		
-void cDIBSection::Draw( void )
+void DIBSection::Draw( void )
 {
 	BitBlt( m_mainDC, 0, 0, WIN_SIZE_X, WIN_SIZE_Y, m_memoryDC, 0, 0, SRCCOPY );
 }
 
-void cDIBSection::DrawTempToMemory( void )
+void DIBSection::DrawTempToMemory( void )
 {
 	BitBlt( m_memoryDC, 0, 0, WIN_SIZE_X, WIN_SIZE_Y, m_tempDC, 0, 0, SRCCOPY );
 }
 
-void cDIBSection::DrawMemoryToTemp( void )
+void DIBSection::DrawMemoryToTemp( void )
 {
 	BitBlt( m_tempDC, 0, 0, WIN_SIZE_X, WIN_SIZE_Y, m_memoryDC, 0, 0, SRCCOPY );
 }
 
-void cDIBSection::Clear( void )
+void DIBSection::Clear( void )
 {
 	UINT offset = 0;
 	
@@ -80,7 +80,7 @@ void cDIBSection::Clear( void )
 	}
 }
 
-void cDIBSection::TempClear( void )
+void DIBSection::TempClear( void )
 {
 		UINT offset = 0;
 	
@@ -99,7 +99,7 @@ void cDIBSection::TempClear( void )
 	}	
 }
 
-void cDIBSection::Release( void )
+void DIBSection::Release( void )
 {
 	SelectObject( m_tempDC, m_TempOldBitmap );
 	DeleteDC( m_tempDC );
