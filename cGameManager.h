@@ -40,17 +40,18 @@ private:
 	{
 		DRAW_PIXEL			= 0,
 		DRAW_DDA_LINE		= 1,
+		DRAW_BRE_LINE		= 2,
 	};	
 	
-	int			m_drawType;
-	int			m_drawState;
-	int			m_startX;
-	int			m_startY;
-		
 	HWND		m_mainWnd;
 	HINSTANCE	m_mainInstance;
 	
 	cPixel*		m_Pixel;
+
+	int			m_drawType;
+	int			m_drawState;
+	int			m_startX;
+	int			m_startY;
 };
 
 inline HWND 		cGameManager::GetWnd( void )	{ return m_mainWnd; }

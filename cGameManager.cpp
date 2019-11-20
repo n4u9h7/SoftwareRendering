@@ -98,6 +98,12 @@ LRESULT cGameManager::MainProc( HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM 
     		case VK_ESCAPE:
     			PostQuitMessage( 0 );
     			break;
+			case VK_F5:
+				m_drawType = DRAW_DDA_LINE;		
+				break;
+			case VK_F6:
+				m_drawType = DRAW_BRE_LINE;
+				break;
 			}
     		break;
     	}
@@ -123,6 +129,11 @@ void cGameManager::LButtonDownProcess( int x, int y )
 			m_startX = x; 
 			m_startY = y;
 		}
+		else if( m_drawType == DRAW_BRE_LINE )
+		{
+			m_startX = x;
+			m_startY = y;
+		}
 	}
 	
 	m_drawState = DRAW_LBTN_DOWN;
@@ -141,7 +152,12 @@ void cGameManager::MouseMoveProcess( int x, int y )
 		}
 		else if( m_drawType == DRAW_DDA_LINE )	
 		{
-			//m_Pixel->DrawLineDDA( m_startX, m_startY, x, y );
+			m_Pixel->SetColor( cColor( 255, 255, 0 ) );
+			m_Pixel->DrawLineDDA( m_startX, m_startY, x, y );
+		}
+		else if( m_drawType == DRAW_BRE_LINE )
+		{
+			m_Pixel->SetColor( cColor( 255, 0, 255 ) );
 			m_Pixel->DrawBresenhamsLine( m_startX, m_startY, x, y );
 		}
 	}

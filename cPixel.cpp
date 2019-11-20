@@ -89,24 +89,225 @@ void cPixel::DrawRectangle( int startX, int startY, int endX, int endY )
 
 void cPixel::DrawBresenhamsLine( int startX, int startY, int endX, int endY )
 {
-	//## First attempt
- 	for( float t = 0.0f; t < 1.0f; t+= 0.01f )
- 	{
- 		int x = ( int )( startX + ( endX - startX ) * t );
- 		int y = ( int )( startY + ( endY - startY ) * t );
- 
- 		DrawPixel( x, y );
- 	}
+	int x = startX;	
+	int y = startY;	
+	
+	int dX = 0;
+	int dY = 0;
 
-	//## Second attempt
-// 	for( int x = startX; x <= endX; x++ )
-// 	{
-// 		float t = ( x - startX ) / ( float )( endX - startX );
-// 		int y = (int)( startY * ( 1.0f - t ) + endY * t );
-// 
-// 		DrawPixel( x, y );
-// 
-// 		TRACE( "x : %d, y : %d\n", x, y );
-// 	}
+	int d = 0;
+	int e = 0;
+	int nE = 0;
 
+	DrawPixel( startX, startY );
+	DrawPixel( endX, endY );
+
+	if( x <= endX && y <= endY )
+	{
+		dX = endX - startX;
+		dY = endY - startY;
+
+		if( dX > dY )
+		{
+			d = ( 2* dY ) - dX;
+			e = 2 * dY;
+			nE = 2 * ( dY - dX );
+
+			while( x < endX )
+			{
+				if( d <= 0 )
+				{
+					d += e;
+					x++;
+				}
+				else
+				{
+					d += nE;
+					x++;
+					y++;
+				}
+
+				DrawPixel( x, y );
+			}
+		}
+		else
+		{
+			d = ( 2 * dX ) - dY;
+			e = 2 * dX;
+			nE = 2 * ( dX - dY );
+
+			while( y < endY )
+			{
+				if( d <= 0 )
+				{
+					d += e;
+					y++;
+				}
+				else
+				{
+					d += nE;
+					x++;
+					y++;
+				}
+
+				DrawPixel( x, y );
+			}
+		}
+	}
+	else if( x >= endX && y >= endY )
+	{
+		dX = endX - startX;
+		dY = endY - startY;
+
+		if( dX < dY )
+		{
+			d = ( 2 * dY ) - dX;
+			e = 2 * dY;
+			nE = 2 * ( dY - dX );
+
+			while( x > endX )
+			{
+				if( d <= 0 )
+				{
+					d -= e;
+					x--;
+				}
+				else
+				{
+					d -= nE;
+					x--;
+					y--;
+				}
+
+				DrawPixel( x, y );
+			}
+		}
+		else
+		{
+			d = ( 2 * dX ) - dY;
+			e = 2 * dX;
+			nE = 2* ( dX - dY );
+
+			while( y > endY )
+			{
+				if( d <= 0 )
+				{
+					d -= e;
+					y--;
+				}
+				else
+				{
+					d -= nE;
+					x--;
+					y--;
+				}
+
+				DrawPixel( x, y );
+			}
+		}
+	}
+	else if( x <= endX && y >= endY )
+	{
+		dX = abs( endX - startX );
+		dY = abs( endY - startY );
+
+		if( dX > dY )
+		{
+			d = ( 2 * dY ) - dX;
+			e = 2 * dY;
+			nE = 2 * ( dY - dX );
+
+			while( x < endX )
+			{
+				if( d <= 0 )
+				{
+					d += e;
+					x++;
+				}
+				else
+				{
+					d += nE;
+					x++;
+					y--;
+				}
+
+				DrawPixel( x, y );
+			}
+		}
+		else
+		{
+			d = ( 2 * dX ) - dY;
+			e = 2 * dX;
+			nE = 2 * ( dX - dY );
+
+			while( y > endY )
+			{
+				if( d <= 0 )
+				{
+					d += e;
+					y--;
+				}
+				else
+				{
+					d += nE;
+					x++;
+					y--;
+				}
+				
+				DrawPixel( x, y );
+			}
+		}
+	}
+	else if( x >= endX && y <= endY )
+	{
+		dX = abs( endX - startX );
+		dY = abs( endY - startY );
+
+		if( dX > dY )
+		{
+			d = ( 2* dY ) - dX;
+			e = 2 * dY;
+			nE = 2 * ( dY - dX );
+
+			while( x > endX )
+			{
+				if( d <= 0 )
+				{
+					d += e;
+					x--;
+				}
+				else
+				{
+					d += nE;
+					x--;
+					y++;
+				}
+
+				DrawPixel( x, y );
+			}
+		}
+		else
+		{
+			d = ( 2 * dX ) - dY;
+			e = 2 * dX;
+			nE = 2 * ( dX - dY );
+
+			while( y < endY )
+			{
+				if( d <= 0 )
+				{
+					d += e;
+					y++;
+				}
+				else
+				{
+					d += nE;
+					x--;
+					y++;
+				}
+
+				DrawPixel( x, y );
+			}
+		}
+	}
 }
