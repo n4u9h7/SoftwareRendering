@@ -59,7 +59,6 @@ Model::Model( const char* fileName )
 
 Model::~Model()
 {
-	
 }
 
 bool Model::Init()

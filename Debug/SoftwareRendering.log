@@ -1,12 +1,7 @@
-﻿  Vector3.cpp
-  Utility.cpp
-  Singleton.cpp
-  Pixel.cpp
-  main.cpp
-  GameManager.cpp
-  DIBSection.cpp
-  Color.cpp
-  코드를 생성하고 있습니다...
+﻿  Model.cpp
 cl : 명령줄 warning D9035: 'Gm' 옵션은 더 이상 사용되지 않으므로 이후 릴리스에서 제거될 예정입니다.
-Color.obj : warning LNK4075: '/EDITANDCONTINUE'이(가) '/SAFESEH' 사양으로 인해 무시됩니다.
+C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Model.cpp(87,11): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Model.cpp(88,11): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Model.cpp(89,11): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Model.cpp(90,11): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   SoftwareRendering.vcxproj -> C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Debug\SoftwareRendering.exe

@@ -30,7 +30,7 @@ bool GameManager::Initialize( HWND hWnd, HINSTANCE hInstance )
 	
 	//m_Pixel = new Pixel( WIN_SIZE_X, WIN_SIZE_Y, RENDER_MGR->GetBytesPerScanline(), RENDER_MGR->GetBytesPerPixel(), RENDER_MGR->GetBits() );
 	//m_Model = new Model( "obj/african_head.obj" );
-	m_Model = new Model( "obj/teamugobj.obj" );
+	m_Model = new Model( "obj/african_head.obj" );
 
 	if( m_Model == NULL )
 	{
