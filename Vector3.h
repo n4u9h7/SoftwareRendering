@@ -38,9 +38,9 @@ public:
 			float x;
 			float y;
 			float z;
-
-			float raw[3];
 		};
+
+		float raw[3];
 	};
 };
 

@@ -2,6 +2,7 @@
 #include "Model.h"
 
 Model::Model( const char* fileName )
+:vVertexces(), vFaces()
 {
 	if( Init() == false )
 	{
@@ -47,7 +48,6 @@ Model::Model( const char* fileName )
 
 			while( iss >> idx >> trash >> itrash >> trash >> itrash )
 			{
-
 				idx--;
 				f.push_back( idx );
 			}
@@ -76,19 +76,19 @@ bool Model::Init()
 
 void Model::Draw()
 {
-	for( int i = 0; i < GetCountVertex(); i++ )
+	for( int i = 0; i < GetCountFace(); i++ )
 	{
 		vector<int> face = GetFace( i );
 		
 		for( int j = 0; j < 3; j++ )
 		{
-			Vector3 v0 = GetVertex( face[ j ] );
-			Vector3 v1 = GetVertex( face[ ( j + 1 ) % 3 ] );
+			Vector3 v0 = GetVertex( face[j] );
+			Vector3 v1 = GetVertex( face[(j+1)%3] );
 
-			int x0 = ( int )( WIN_SIZE_X - ( v0.x + 1.0f ) * WIN_SIZE_X / 2.0f );
-			int y0 = ( int )( WIN_SIZE_Y - ( v0.y + 1.0f ) * WIN_SIZE_Y / 2.0f );
-			int x1 = ( int )( WIN_SIZE_X - ( v1.x + 1.0f ) * WIN_SIZE_X / 2.0f );
-			int y1 = ( int )( WIN_SIZE_Y - ( v1.y + 1.0f ) * WIN_SIZE_Y / 2.0f );
+			int x0 = WIN_SIZE_X - ( v0.x + 1.0f ) * WIN_SIZE_X / 2.0f;
+			int y0 = WIN_SIZE_Y - ( v0.y + 1.0f ) * WIN_SIZE_Y / 2.0f;
+			int x1 = WIN_SIZE_X - ( v1.x + 1.0f ) * WIN_SIZE_X / 2.0f;
+			int y1 = WIN_SIZE_Y - ( v1.y + 1.0f ) * WIN_SIZE_Y / 2.0f;
 
 			m_Pixel->DrawBresenhamsLine2( x0, y0, x1, y1 );
 		}
