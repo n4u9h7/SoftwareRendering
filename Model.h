@@ -2,7 +2,7 @@
 #define __MODEL__
 
 #include <vector>
-#include "Vector3.h"
+#include "Vector.h"
 #include "Pixel.h"
 
 using namespace std;

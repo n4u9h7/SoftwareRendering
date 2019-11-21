@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Vector3.h"
+#include "Vector.h"
 
 Vector3::Vector3( const float* pVec3 )
 {
