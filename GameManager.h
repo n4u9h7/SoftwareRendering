@@ -4,6 +4,7 @@
 #include "Singleton.h"
 #include "DIBSection.h"
 #include "Pixel.h"
+#include "Model.h"
 
 class GameManager
 {
@@ -47,6 +48,7 @@ private:
 	HINSTANCE	m_mainInstance;
 	
 	Pixel*		m_Pixel;
+	Model*		m_Model;
 
 	int			m_drawType;
 	int			m_drawState;

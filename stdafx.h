@@ -12,6 +12,10 @@
 #include <map>
 #include <algorithm>
 #include <cmath>
+#include <istream>
+#include <fstream>
+#include <sstream>
+#include <string>
 
 // 윈도우 헤더파일 
 #include <windows.h>

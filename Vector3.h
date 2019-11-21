@@ -30,9 +30,18 @@ public:
 	bool operator == ( const Vector3& vec3 ) const;
 	bool operator != ( const Vector3& vec3 ) const;
 public:
-	float x;
-	float y;
-	float z;
+	
+	union 
+	{
+		struct 
+		{
+			float x;
+			float y;
+			float z;
+
+			float raw[3];
+		};
+	};
 };
 
 #endif

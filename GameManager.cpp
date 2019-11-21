@@ -2,7 +2,7 @@
 #include "GameManager.h"
 
 GameManager::GameManager()
-: m_mainWnd( NULL ), m_mainInstance( NULL ), m_Pixel( NULL ), m_drawType( DRAW_BRE_LINE ),
+: m_mainWnd( NULL ), m_mainInstance( NULL ), m_Pixel( NULL ), m_drawState( DRAW_NONE ), m_drawType( DRAW_BRE_LINE ),
   m_startX( 0 ), m_startY( 0 )
 {
 	
@@ -28,7 +28,10 @@ bool GameManager::Initialize( HWND hWnd, HINSTANCE hInstance )
 		return false;
 	}
 	
-	m_Pixel = new Pixel( WIN_SIZE_X, WIN_SIZE_Y, RENDER_MGR->GetBytesPerScanline(), RENDER_MGR->GetBytesPerPixel(), RENDER_MGR->GetBits() );
+	//m_Pixel = new Pixel( WIN_SIZE_X, WIN_SIZE_Y, RENDER_MGR->GetBytesPerScanline(), RENDER_MGR->GetBytesPerPixel(), RENDER_MGR->GetBits() );
+
+
+	m_Model = new Model( "obj/african_face.obj" );
 		
 //	SetTimer( m_mainWnd, 1, 10, NULL );
 	
@@ -45,6 +48,9 @@ void GameManager::Update( void )
 void GameManager::Render()
 {
 	RENDER_MGR->Draw();
+
+	m_Model->Draw();
+
 }
 
 WPARAM GameManager::MessageLoop( void )
