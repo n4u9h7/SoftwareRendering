@@ -262,11 +262,23 @@
 				Name="Math"
 				>
 				<File
+					RelativePath=".\Math.h"
+					>
+				</File>
+				<File
 					RelativePath=".\Vector.cpp"
 					>
 				</File>
 				<File
 					RelativePath=".\Vector.h"
+					>
+				</File>
+				<File
+					RelativePath=".\VectorFunction.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\VectorFunction.h"
 					>
 				</File>
 			</Filter>
