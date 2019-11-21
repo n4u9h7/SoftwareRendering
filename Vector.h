@@ -14,8 +14,8 @@ public:
 
 	Vector2& operator += ( const Vector2& vec2 );
 	Vector2& operator -= ( const Vector2& vec2 );
-	Vector2& operator *= ( const Vector2& vec2 );
-	Vector2& operator /= ( const Vector2& vec2 );
+	Vector2& operator *= ( float fValue );
+	Vector2& operator /= ( float fValue );
 
 	Vector2 operator + () const;
 	Vector2 operator - () const;
@@ -84,6 +84,50 @@ public:
 		};
 
 		float raw[3];
+	};
+};
+
+class Vector4
+{
+public:
+	Vector4(){};
+	Vector4( const float* );
+	Vector4( const Vector4& );
+	Vector4( float x, float y, float z, float w );
+
+	operator float* ();
+	operator const float* () const;
+
+	Vector4& operator += ( const Vector4& vec4 );
+	Vector4& operator -= ( const Vector4& vec4 );
+	Vector4& operator *= ( float fValue );
+	Vector4& operator /= ( float fValue );
+
+	Vector4 operator + () const;
+	Vector4 operator - () const;
+
+	Vector4 operator + ( const Vector4& vec4 ) const;
+	Vector4 operator - ( const Vector4& vec4 ) const;
+	Vector4 operator * ( float fValue ) const;
+	Vector4 operator / ( float fValue ) const;
+
+	friend Vector4 operator * ( float fValue, const Vector4& vec4 );
+
+	bool operator == ( const Vector4& vec4 ) const;
+	bool operator != ( const Vector4& vec4 ) const;
+public:
+
+	union 
+	{
+		struct 
+		{
+			float x;
+			float y;
+			float z;
+			float w;
+		};
+
+		float raw[4];
 	};
 };
 

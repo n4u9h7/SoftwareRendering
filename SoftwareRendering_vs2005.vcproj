@@ -262,11 +262,11 @@
 				Name="Math"
 				>
 				<File
-					RelativePath=".\Vector3.cpp"
+					RelativePath=".\Vector.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Vector3.h"
+					RelativePath=".\Vector.h"
 					>
 				</File>
 			</Filter>
