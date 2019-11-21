@@ -2,3 +2,14 @@
 *.suo
 *.ncb
 *.user
+Debug/vc142.pdb
+Debug/vc142.idb
+Debug/SoftwareRendering.pdb
+Debug/SoftwareRendering.log
+Debug/SoftwareRendering.ilk
+Debug/Software.5955E9B7.tlog/CL.write.1.tlog
+Debug/Software.5955E9B7.tlog/CL.read.1.tlog
+Debug/GameManager.obj
+.vs/SoftwareRendering/v16/ipch/AutoPCH/40e74f8c93845dc8/GAMEMANAGER.ipch
+.vs/SoftwareRendering/v16/ipch/AutoPCH/221ff99014296f8e/VECTORFUNCTION.ipch
+.vs/SoftwareRendering/v16/Browse.VC.db
