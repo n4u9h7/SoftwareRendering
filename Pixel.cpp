@@ -30,6 +30,40 @@ void Pixel::DrawPixel( int x, int y )
 	*(m_pBits + offset + 2) = m_Color.GetR();
 }
 
+void Pixel::DrawLine( Vector2 p0, Vector2 p1 )
+{
+	bool bSteep = false;
+
+	if( abs( p0.x - p1.x ) < abs( p0.y - p1.y ) )
+	{
+		swap( p0.x, p0.y );
+		swap( p1.x, p1.y );
+
+		bSteep = true;
+	}
+
+	if( p0.x > p1.x )
+	{
+		swap( p0, p1 );
+	}
+
+	for( int x = p0.x; x < p1.x; x++ )
+	{
+		float t = ( x - p0.x ) / ( float )( p1.x - p0.x );
+
+		int y = p0.y * ( 1.0f - t ) + p1.y * t;
+
+		if( bSteep )
+		{
+			DrawPixel( y, x );
+		}
+		else
+		{
+			DrawPixel( x, y );
+		}
+	}
+}
+
 void Pixel::DrawLineDDA( int startX, int startY, int endX, int endY )
 {
 	if ((startX == endX) && (startY == endY)) return;
@@ -357,4 +391,55 @@ void Pixel::DrawBresenhamsLine2( int startX, int startY, int endX, int endY )
 			}
 		}
 	}
+}
+
+void Pixel::DrawTriangle( Vector2* pOut, Color color )
+{
+	m_Color = color;
+		
+	Vector2 bBoxMin( WIN_SIZE_X - 1, WIN_SIZE_Y - 1 );
+	Vector2 bBoxMax( 0, 0 );
+	Vector2 clamp( WIN_SIZE_X - 1, WIN_SIZE_Y - 1 );
+
+	for( int i = 0; i < 3; i++ )
+	{
+		for( int j = 0; j < 2; j++ )
+		{
+			bBoxMin[j] = max( 0, min( bBoxMin[j], pOut[i][j] ) );
+			bBoxMax[j] = min( clamp[j], max(bBoxMax[j], pOut[i][j] ) );
+		}
+	}
+
+	Vector2 P;
+
+	for( P.x = bBoxMin.x; P.x <= bBoxMax.x; P.x++ )
+	{
+		for( P.y = bBoxMin.y; P.y <= bBoxMax.y; P.y++ )
+		{
+			Vector3 bc_screen = Barycentric( pOut, P );
+
+			if( bc_screen.x < 0 || bc_screen.y < 0 || bc_screen.z < 0 )
+			{
+				continue;
+			}
+
+			DrawPixel( P.x, P.y );
+		}
+	}
+}
+
+Vector3	Pixel::Barycentric( Vector2* pOut, Vector2 pV1 )
+{
+	Vector3 u;
+	Vector3 v = Vector3( pOut[2][0] - pOut[0][0], pOut[1][0] - pOut[0][0], pOut[0][0] - pV1[0] );
+	Vector3 w = Vector3( pOut[2][1] - pOut[0][1], pOut[1][1] - pOut[0][1], pOut[0][1] - pV1[1] );
+		
+	Vec3Cross( &u, &v, &w );
+
+	if( abs( u[2] ) < 1 )
+	{
+		return Vector3( -1, 1, 1 );
+	}
+
+	return Vector3( 1.0f - ( u.x + u.y ) / u.z, u.y / u.z, u.x / u.z );
 }

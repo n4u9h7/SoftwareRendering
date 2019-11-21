@@ -65,8 +65,10 @@ public:
 
 	Vector3 operator + ( const Vector3& vec3 ) const;
 	Vector3 operator - ( const Vector3& vec3 ) const;
+	Vector3 operator ^ ( const Vector3& vec3 ) const;
 	Vector3 operator * ( float fValue ) const;
 	Vector3 operator / ( float fValue ) const;
+	
 
 	friend Vector3 operator * ( float fValue, const Vector3& vec3 );
 

@@ -29,7 +29,7 @@ bool GameManager::Initialize( HWND hWnd, HINSTANCE hInstance )
 	}
 	
 	//m_Pixel = new Pixel( WIN_SIZE_X, WIN_SIZE_Y, RENDER_MGR->GetBytesPerScanline(), RENDER_MGR->GetBytesPerPixel(), RENDER_MGR->GetBits() );
-	//m_Model = new Model( "obj/african_head.obj" );
+	
 	m_Model = new Model( "obj/african_head.obj" );
 
 	if( m_Model == NULL )
@@ -40,6 +40,17 @@ bool GameManager::Initialize( HWND hWnd, HINSTANCE hInstance )
 //	SetTimer( m_mainWnd, 1, 10, NULL );
 	
 //	SendMessage( m_mainWnd, WM_TIMER, 1, 0 );
+
+ 	//Vector2 t0[3] = { Vector2( 10, 70 ), Vector2( 50, 160 ), Vector2( 70, 80 ) };
+	//m_Pixel->DrawTriangle( t0, Color( 255, 255, 0 ) );
+// 	Vector2 t1[3] = { Vector2( 180, 50 ), Vector2( 150, 1 ), Vector2( 70, 180 ) };
+// 	Vector2 t2[3] = { Vector2( 180, 150 ), Vector2( 120, 160 ), Vector2( 130, 180 ) };
+// 
+// 	m_Pixel->DrawTriangle( t0[0], t0[1], t0[2], Color( 255, 255, 0 ) );
+// 	m_Pixel->DrawTriangle( t1[0], t1[1], t1[2], Color( 0, 255, 255 ) );
+// 	m_Pixel->DrawTriangle( t2[0], t2[1], t2[2], Color( 255, 0, 255 ) );
+
+	m_Model->Draw();
 	
 	return true;
 }
@@ -53,7 +64,7 @@ void GameManager::Render()
 {
 	RENDER_MGR->Draw();
 
-	m_Model->Draw();
+	/*m_Model->Draw();*/
 }
 
 WPARAM GameManager::MessageLoop( void )
@@ -181,4 +192,6 @@ void GameManager::LButtonUpProcess( int x, int y )
 
 void GameManager::Release( void )
 {
+	SAFE_DELETE( m_Pixel );
+	//SAFE_DELETE( m_Model );
 }
