@@ -18,6 +18,7 @@ public:
 	void	DrawBresenhamsLine( int startX, int startY, int endX, int endY );
 	void	DrawBresenhamsLine2( int startX, int startY, int endX, int endY );
 	void	DrawTriangle( Vector2* pOut, Color color );
+	void	DrawTriangle( Vector2 t0, Vector2 t1, Vector2 t2, Color color );
 
 	Vector3	Barycentric( Vector2* pOut, Vector2 pV1 );
 	

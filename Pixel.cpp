@@ -428,6 +428,45 @@ void Pixel::DrawTriangle( Vector2* pOut, Color color )
 	}
 }
 
+void Pixel::DrawTriangle( Vector2 t0, Vector2 t1, Vector2 t2, Color color )
+{
+	m_Color = color;
+
+	if( t0.y == t1.y && t0.y == t2.y )
+	{
+		return;
+	}
+
+	if( t0.y > t1.y )	swap( t0, t1 );
+	if( t0.y > t2.y )	swap( t0, t2 );
+	if( t1.y > t2.y )	swap( t1, t2 );
+
+	int totalHeight = t2.y - t0.y;
+
+	for( int i = 0; i < totalHeight; i++ )
+	{
+		bool secondHalf = i > t1.y - t0.y || t1.y == t0.y;
+
+		int segmentHeight = secondHalf ? t2.y - t1.y : t1.y - t0.y;
+
+		float fAlpha = ( float) i / totalHeight;
+		float fBeta = ( float ) ( i - ( secondHalf ? t1.y - t0.y : 0 ) ) / segmentHeight;
+
+		Vector2 v1 = t0 + ( t2 - t0 ) * fAlpha;
+		Vector2 v2 = secondHalf ? t1 + ( t2 - t1 ) * fBeta : t0 + ( t1 - t0 ) * fBeta;
+
+		if( v1.x > v2.x )
+		{
+			swap( v1, v2 );
+		}
+
+		for( int j = v1.x; j <= v2.x; j++ )
+		{
+			DrawPixel( j, t0.y + i );
+		}
+	}
+}
+
 Vector3	Pixel::Barycentric( Vector2* pOut, Vector2 pV1 )
 {
 	Vector3 u;
