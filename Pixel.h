@@ -12,15 +12,15 @@ public:
 
 	void	SetColor( Color Color ) { m_Color = Color; }
 	void	DrawPixel( int x, int y );
-	void	DrawLine( Vector2 p0, Vector2 p1 );
+	void	DrawLine( vector2 p0, vector2 p1 );
 	void 	DrawLineDDA( int startX, int startY, int endX, int endY );
 	void	DrawRectangle( int startX, int startY, int endX, int endY );
 	void	DrawBresenhamsLine( int startX, int startY, int endX, int endY );
 	void	DrawBresenhamsLine2( int startX, int startY, int endX, int endY );
-	void	DrawTriangle( Vector2* pOut, Color color );
-	void	DrawTriangle( Vector2 t0, Vector2 t1, Vector2 t2, Color color );
+	void	DrawTriangle( vector2* pOut, Color color );
+	void	DrawTriangle( vector2 t0, vector2 t1, vector2 t2, Color color );
 
-	Vector3	Barycentric( Vector2* pOut, Vector2 pV1 );
+	Vector3	Barycentric( vector2* pOut, vector2 pV1 );
 	
 private:
 	Color	m_Color;

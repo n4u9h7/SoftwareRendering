@@ -1,48 +1,122 @@
 #ifndef __VECTOR__
 #define __VECTOR__
 
+template< typename T >
 class Vector2
 {
 public:
 	Vector2(){};
-	Vector2( const float* );
-	Vector2( const Vector2& );
-	Vector2( float x, float y );
+	Vector2( const T* pVec2 )
+	{
+		x = pVec2[0];
+		y = pVec2[1];
+	}
+	Vector2( const Vector2& rhs )
+	{
+		x = rhs.x;
+		y = rhs.y;
+	}
+	Vector2( T x, T y )
+	{
+		this->x = x;
+		this->y = y;
+	}
 
-	operator float* ();
-	operator const float* () const;
+	operator T* ()
+	{
+		return ( T* ) &x;
+	}
+	operator const T* () const
+	{
+		return( const T * ) &x;
+	}
 
-	Vector2& operator += ( const Vector2& vec2 );
-	Vector2& operator -= ( const Vector2& vec2 );
-	Vector2& operator *= ( float fValue );
-	Vector2& operator /= ( float fValue );
+	Vector2& operator += ( const Vector2& vec2 )
+	{
+		x += vec2.x;
+		y += vec2.y;
+	}
 
-	Vector2 operator + () const;
-	Vector2 operator - () const;
+	Vector2& operator -= ( const Vector2& vec2 )
+	{
+		x -= vec2.x;
+		y -= vec2.y;
+	}
 
-	Vector2 operator + ( const Vector2& vec2 ) const;
-	Vector2 operator - ( const Vector2& vec2 ) const;
-	Vector2 operator * ( float fValue ) const;
-	Vector2 operator / ( float fValue ) const;
+	Vector2& operator *= ( T fValue )
+	{
+		x *= fValue;
+		y *= fValue;
 
-	friend Vector2 operator * ( float fValue, const Vector2& vec2 );
+		return *this;
+	}
 
-	bool operator == ( const Vector2& vec2 ) const;
-	bool operator != ( const Vector2& vec2 ) const;
+	Vector2& operator /= ( T fValue )
+	{
+		x /= fValue;
+		y /= fValue;
+	}
+
+	Vector2 operator + () const
+	{
+		return *this;
+	}
+
+	Vector2 operator - () const
+	{
+		return Vector2( -x, -y );
+	}
+
+	Vector2 operator + ( const Vector2& vec2 ) const
+	{
+		return Vector2( x + vec2.x, y + vec2.y );
+	}
+
+	Vector2 operator - ( const Vector2& vec2 ) const
+	{
+		return Vector2( x - vec2.x, y - vec2.y );
+	}
+
+	Vector2 operator * ( T fValue ) const
+	{
+		return Vector2( x * fValue, y * fValue );
+	}
+
+	Vector2 operator / ( T fValue ) const
+	{
+		return Vector2( x / fValue, y / fValue );
+	}
+
+	friend Vector2 operator * ( T fValue, const Vector2& vec2 )
+	{
+		return Vector2( fValue * vec2.x, fValue * vec2.y );
+	}
+
+	bool operator == ( const Vector2& vec2 ) const
+	{
+		return x == vec2.x && y == vec2.y;
+	}
+
+	bool operator != ( const Vector2& vec2 ) const
+	{
+		return x != vec2.x || y != vec2.y;
+	}
 
 public:
 	union
 	{
 		struct  
 		{
-			float x;
-			float y;
+			T x;
+			T y;
 		};
 
-		float raw[2];
+		T raw[2];
 	};
 
 };
+
+typedef Vector2< int > vector2;
 
 class Vector3
 {

@@ -80,13 +80,13 @@ void Model::Draw()
 	for( int i = 0; i < GetCountFace(); i++ )
 	{
 		vector<int> face = GetFace( i );
-		Vector2 screen_coords[3];
+		vector2 screen_coords[3];
 		Vector3 world_coords[3];
 
 		for( int j = 0; j <3; j++ )
 		{
 			Vector3 v = GetVertex( face[j] );
-			screen_coords[j] = Vector2( ( v.x + 1.0f ) * WIN_SIZE_X / 2.0f, ( v.y + 1.0f ) * WIN_SIZE_Y / 2.0f );
+			screen_coords[j] = vector2( ( v.x + 1.0f ) * WIN_SIZE_X / 2.0f, ( v.y + 1.0f ) * WIN_SIZE_Y / 2.0f );
 			world_coords[j] = v;
 		}
 

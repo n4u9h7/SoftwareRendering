@@ -6,113 +6,113 @@
 	Vector2
 */
 //////////////////////////////////////////////////////////////////////////
-Vector2::Vector2( const float* pVec2 )
-{
-	x = pVec2[0];
-	y = pVec2[1];
-}
-
-Vector2::Vector2( const Vector2& rhs )
-{
-	x = rhs.x;
-	y = rhs.y;
-}
-
-Vector2::Vector2( float x, float y )
-{
-	this->x = x;
-	this->y = y;
-}
-
-Vector2::operator float* ()
-{
-	return (float * ) &x;
-}
-
-Vector2::operator const float* () const
-{
-	return ( const float * ) &x;
-}
-
-Vector2& Vector2::operator += ( const Vector2& vec2 )
-{
-	x += vec2.x;
-	y += vec2.y;
-
-	return *this;
-}
-
-Vector2& Vector2::operator -= ( const Vector2& vec2 )
-{
-	x -= vec2.x;
-	y -= vec2.y;
-
-	return *this;
-}
-
-Vector2& Vector2::operator *= ( float fValue )
-{
-	x *= fValue;
-	y *= fValue;
-
-	return *this;
-}
-
-Vector2& Vector2::operator /= ( float fValue )
-{
-	float fInv = 1.0f / fValue;
-
-	x *= fInv;
-	y *= fInv;
-
-	return *this;
-}
-
-Vector2 Vector2::operator + () const
-{
-	return *this;
-}
-
-Vector2 Vector2::operator - () const
-{
-	return Vector2( -x, -y );
-}
-
-Vector2 Vector2::operator + ( const Vector2& vec2 ) const
-{
-	return Vector2( x + vec2.x, y + vec2.y );
-}
-
-Vector2 Vector2::operator - ( const Vector2& vec2 ) const
-{
-	return Vector2( x - vec2.x, y - vec2.y );
-}
-
-Vector2 Vector2::operator * ( float fValue ) const
-{
-	return Vector2( x * fValue, y * fValue );
-}
-
-Vector2 Vector2::operator / ( float fValue ) const
-{
-	float fInv = 1.0f / fValue;
-	return Vector2( x * fInv, y * fInv );
-}
-
-Vector2 operator * ( float fValue, const Vector2& vec2 )
-{
-	return Vector2( fValue * vec2.x, fValue * vec2.y );
-}
-
-bool Vector2::operator == ( const Vector2& vec2 ) const
-{
-	return x == vec2.x && y == vec2.y;
-}
-
-bool Vector2::operator != ( const Vector2& vec2 ) const
-{
-	return x != vec2.x || y != vec2.y;
-}
+// Vector2::Vector2( const float* pVec2 )
+// {
+// 	x = pVec2[0];
+// 	y = pVec2[1];
+// }
+// 
+// Vector2::Vector2( const Vector2& rhs )
+// {
+// 	x = rhs.x;
+// 	y = rhs.y;
+// }
+// 
+// Vector2::Vector2( float x, float y )
+// {
+// 	this->x = x;
+// 	this->y = y;
+// }
+// 
+// Vector2::operator float* ()
+// {
+// 	return (float * ) &x;
+// }
+// 
+// Vector2::operator const float* () const
+// {
+// 	return ( const float * ) &x;
+// }
+// 
+// Vector2& Vector2::operator += ( const Vector2& vec2 )
+// {
+// 	x += vec2.x;
+// 	y += vec2.y;
+// 
+// 	return *this;
+// }
+// 
+// Vector2& Vector2::operator -= ( const Vector2& vec2 )
+// {
+// 	x -= vec2.x;
+// 	y -= vec2.y;
+// 
+// 	return *this;
+// }
+// 
+// Vector2& Vector2::operator *= ( float fValue )
+// {
+// 	x *= fValue;
+// 	y *= fValue;
+// 
+// 	return *this;
+// }
+// 
+// Vector2& Vector2::operator /= ( float fValue )
+// {
+// 	float fInv = 1.0f / fValue;
+// 
+// 	x *= fInv;
+// 	y *= fInv;
+// 
+// 	return *this;
+// }
+// 
+// Vector2 Vector2::operator + () const
+// {
+// 	return *this;
+// }
+// 
+// Vector2 Vector2::operator - () const
+// {
+// 	return Vector2( -x, -y );
+// }
+// 
+// Vector2 Vector2::operator + ( const Vector2& vec2 ) const
+// {
+// 	return Vector2( x + vec2.x, y + vec2.y );
+// }
+// 
+// Vector2 Vector2::operator - ( const Vector2& vec2 ) const
+// {
+// 	return Vector2( x - vec2.x, y - vec2.y );
+// }
+// 
+// Vector2 Vector2::operator * ( float fValue ) const
+// {
+// 	return Vector2( x * fValue, y * fValue );
+// }
+// 
+// Vector2 Vector2::operator / ( float fValue ) const
+// {
+// 	float fInv = 1.0f / fValue;
+// 	return Vector2( x * fInv, y * fInv );
+// }
+// 
+// Vector2 operator * ( float fValue, const Vector2& vec2 )
+// {
+// 	return Vector2( fValue * vec2.x, fValue * vec2.y );
+// }
+// 
+// bool Vector2::operator == ( const Vector2& vec2 ) const
+// {
+// 	return x == vec2.x && y == vec2.y;
+// }
+// 
+// bool Vector2::operator != ( const Vector2& vec2 ) const
+// {
+// 	return x != vec2.x || y != vec2.y;
+// }
 
 //////////////////////////////////////////////////////////////////////////
 /*
