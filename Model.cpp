@@ -98,7 +98,7 @@ void Model::Draw()
 	
 		if( intensity > 0 )
 		{
-			m_Pixel->DrawTriangle( screen_coords, Color( intensity*255, intensity*255, intensity*255 ) );
+			m_Pixel->DrawTriangle( screen_coords, Color( intensity * 255, intensity * 255, intensity * 255 ) );
 		}
 	}
 // 	for( int i = 0; i < GetCountFace(); i++ )

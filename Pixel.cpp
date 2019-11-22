@@ -14,12 +14,12 @@ Pixel::Pixel( int width, int height, UINT bytesPerScanline, UINT bytesPerPixel, 
 Pixel::~Pixel()
 {
 }
-	
+
 void Pixel::DrawPixel( int x, int y )
 {
 	int offset = ( y * m_bytesPerScanline ) + ( x * m_bytesPerPixel );
 	int maxOffset = m_bytesPerScanline * ( m_height - 1 ) + ( m_width - 1 ) * m_bytesPerPixel;
-	
+
 	if( offset < 0 || offset > maxOffset ) 
 	{
 		return;
@@ -73,10 +73,10 @@ void Pixel::DrawLineDDA( int startX, int startY, int endX, int endY )
 	float fM = deltaY / deltaX;
 	float iTempX = (float)startX;
 	float iTempY = (float)startY;
-	
+
 	DrawPixel(startX, startY);
 	DrawPixel(endX, endY);
-	
+
 	if (fM <= 1.0f && fM >= -1.0f)
 	{
 		if (startX > endX)
@@ -125,7 +125,7 @@ void Pixel::DrawBresenhamsLine( int startX, int startY, int endX, int endY )
 {
 	int x = startX;	
 	int y = startY;	
-	
+
 	int dX = 0;
 	int dY = 0;
 
@@ -287,7 +287,7 @@ void Pixel::DrawBresenhamsLine( int startX, int startY, int endX, int endY )
 					x++;
 					y--;
 				}
-				
+
 				DrawPixel( x, y );
 			}
 		}
@@ -396,7 +396,7 @@ void Pixel::DrawBresenhamsLine2( int startX, int startY, int endX, int endY )
 void Pixel::DrawTriangle( Vector2* pOut, Color color )
 {
 	m_Color = color;
-		
+
 	Vector2 bBoxMin( WIN_SIZE_X - 1, WIN_SIZE_Y - 1 );
 	Vector2 bBoxMax( 0, 0 );
 	Vector2 clamp( WIN_SIZE_X - 1, WIN_SIZE_Y - 1 );
@@ -423,7 +423,7 @@ void Pixel::DrawTriangle( Vector2* pOut, Color color )
 				continue;
 			}
 
-			DrawPixel( P.x, P.y );
+			DrawPixel( WIN_SIZE_X - P.x, WIN_SIZE_Y - P.y );
 		}
 	}
 }
@@ -433,7 +433,7 @@ Vector3	Pixel::Barycentric( Vector2* pOut, Vector2 pV1 )
 	Vector3 u;
 	Vector3 v = Vector3( pOut[2][0] - pOut[0][0], pOut[1][0] - pOut[0][0], pOut[0][0] - pV1[0] );
 	Vector3 w = Vector3( pOut[2][1] - pOut[0][1], pOut[1][1] - pOut[0][1], pOut[0][1] - pV1[1] );
-		
+
 	Vec3Cross( &u, &v, &w );
 
 	if( abs( u[2] ) < 1 )
