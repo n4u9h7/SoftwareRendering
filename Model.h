@@ -16,14 +16,14 @@ public:
 	bool				Init();
 	void				Draw();
 
-	Vector3				GetVertex( int idx );
+	vector3f			GetVertex( int idx );
 	vector<int>			GetFace( int idx );
 
 	int					GetCountVertex();
 	int					GetCountFace();
 
 private:
-	vector<Vector3>		vVertexces;	// Vertex Vector
+	vector<vector3f>	vVertexces;	// Vertex Vector
 	vector<vector<int>>	vFaces;		// Faces Vector
 
 	Pixel*				m_Pixel;

@@ -30,7 +30,7 @@ void Pixel::DrawPixel( int x, int y )
 	*(m_pBits + offset + 2) = m_Color.GetR();
 }
 
-void Pixel::DrawLine( vector2 p0, vector2 p1 )
+void Pixel::DrawLine( vector2i p0, vector2i p1 )
 {
 	bool bSteep = false;
 
@@ -393,13 +393,13 @@ void Pixel::DrawBresenhamsLine2( int startX, int startY, int endX, int endY )
 	}
 }
 
-void Pixel::DrawTriangle( vector2* pOut, Color color )
+void Pixel::DrawTriangle( vector2i* pOut, Color color )
 {
 	m_Color = color;
 
-	vector2 bBoxMin( WIN_SIZE_X - 1, WIN_SIZE_Y - 1 );
-	vector2 bBoxMax( 0, 0 );
-	vector2 clamp( WIN_SIZE_X - 1, WIN_SIZE_Y - 1 );
+	vector2i bBoxMin( WIN_SIZE_X - 1, WIN_SIZE_Y - 1 );
+	vector2i bBoxMax( 0, 0 );
+	vector2i clamp( WIN_SIZE_X - 1, WIN_SIZE_Y - 1 );
 
 	for( int i = 0; i < 3; i++ )
 	{
@@ -410,13 +410,13 @@ void Pixel::DrawTriangle( vector2* pOut, Color color )
 		}
 	}
 
-	vector2 P;
+	vector2i P;
 
 	for( P.x = bBoxMin.x; P.x <= bBoxMax.x; P.x++ )
 	{
 		for( P.y = bBoxMin.y; P.y <= bBoxMax.y; P.y++ )
 		{
-			Vector3 bc_screen = Barycentric( pOut, P );
+			vector3f bc_screen = Barycentric( pOut, P );
 
 			if( bc_screen.x < 0 || bc_screen.y < 0 || bc_screen.z < 0 )
 			{
@@ -428,7 +428,7 @@ void Pixel::DrawTriangle( vector2* pOut, Color color )
 	}
 }
 
-void Pixel::DrawTriangle( vector2 t0, vector2 t1, vector2 t2, Color color )
+void Pixel::DrawTriangle( vector2i t0, vector2i t1, vector2i t2, Color color )
 {
 	m_Color = color;
 
@@ -452,8 +452,8 @@ void Pixel::DrawTriangle( vector2 t0, vector2 t1, vector2 t2, Color color )
 		float fAlpha = ( float) i / totalHeight;
 		float fBeta = ( float ) ( i - ( secondHalf ? t1.y - t0.y : 0 ) ) / segmentHeight;
 
-		vector2 v1 = t0 + ( t2 - t0 ) * fAlpha;
-		vector2 v2 = secondHalf ? t1 + ( t2 - t1 ) * fBeta : t0 + ( t1 - t0 ) * fBeta;
+		vector2i v1 = t0 + ( t2 - t0 ) * fAlpha;
+		vector2i v2 = secondHalf ? t1 + ( t2 - t1 ) * fBeta : t0 + ( t1 - t0 ) * fBeta;
 
 		if( v1.x > v2.x )
 		{
@@ -467,18 +467,18 @@ void Pixel::DrawTriangle( vector2 t0, vector2 t1, vector2 t2, Color color )
 	}
 }
 
-Vector3	Pixel::Barycentric( vector2* pOut, vector2 pV1 )
+vector3f	Pixel::Barycentric( vector2i* pOut, vector2i pV1 )
 {
-	Vector3 u;
-	Vector3 v = Vector3( pOut[2][0] - pOut[0][0], pOut[1][0] - pOut[0][0], pOut[0][0] - pV1[0] );
-	Vector3 w = Vector3( pOut[2][1] - pOut[0][1], pOut[1][1] - pOut[0][1], pOut[0][1] - pV1[1] );
+	vector3f u;
+	vector3f v = vector3f( pOut[2][0] - pOut[0][0], pOut[1][0] - pOut[0][0], pOut[0][0] - pV1[0] );
+	vector3f w = vector3f( pOut[2][1] - pOut[0][1], pOut[1][1] - pOut[0][1], pOut[0][1] - pV1[1] );
 
 	Vec3Cross( &u, &v, &w );
 
 	if( abs( u[2] ) < 1 )
 	{
-		return Vector3( -1, 1, 1 );
+		return vector3f( -1, 1, 1 );
 	}
 
-	return Vector3( 1.0f - ( u.x + u.y ) / u.z, u.y / u.z, u.x / u.z );
+	return vector3f( 1.0f - ( u.x + u.y ) / u.z, u.y / u.z, u.x / u.z );
 }

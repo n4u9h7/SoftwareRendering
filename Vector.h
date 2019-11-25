@@ -116,50 +116,140 @@ public:
 
 };
 
-typedef Vector2< int > vector2;
-
+template < typename T >
 class Vector3
 {
 public:
 	Vector3(){};
-	Vector3( const float* );
-	Vector3( const Vector3& );
-	Vector3( float x, float y, float z );
+	Vector3( const T* pVec3 )
+	{
+		x = pVec3[0];
+		y = pVec3[1];
+		z = pVec3[2];
+	}
 
-	operator float* ();
-	operator const float* () const;
+	Vector3( const Vector3& rhs )
+	{
+		x = rhs.x;
+		y = rhs.y;
+		z = rhs.z;
+	}
 
-	Vector3& operator += ( const Vector3& vec3 );
-	Vector3& operator -= ( const Vector3& vec3 );
-	Vector3& operator *= ( float fValue );
-	Vector3& operator /= ( float fValue );
+	Vector3( T x, T y, T z )
+	{
+		this->x = x;
+		this->y = y;
+		this->z = z;
+	}
 
-	Vector3 operator + () const;
-	Vector3 operator - () const;
+	operator T* ()
+	{
+		return ( T * ) &x;
+	}
 
-	Vector3 operator + ( const Vector3& vec3 ) const;
-	Vector3 operator - ( const Vector3& vec3 ) const;
-	Vector3 operator ^ ( const Vector3& vec3 ) const;
-	Vector3 operator * ( float fValue ) const;
-	Vector3 operator / ( float fValue ) const;
+	operator const T* () const
+	{
+		return ( const T * ) &x;
+	}
+
+	Vector3& operator += ( const Vector3& vec3 )
+	{
+		x += vec3.x;
+		y += vec3.y;
+		z += vec3.z;
+
+		return *this;
+	}
+
+	Vector3& operator -= ( const Vector3& vec3 )
+	{
+		x -= vec3.x;
+		y -= vec3.y;
+		z -= vec3.z;
+
+		return *this; 
+	}
+
+	Vector3& operator *= ( T fValue )
+	{
+		x *= fValue;
+		y *= fValue;
+		z *= fValue;
+
+		return *this;
+	}
+
+	Vector3& operator /= ( T fValue )
+	{
+		x /= fValue;
+		y /= fValue;
+		z /= fValue;
+
+		return *this;
+	}
+
+	Vector3 operator + () const
+	{
+		return *this;
+	}
+
+	Vector3 operator - () const
+	{
+		return Vector3( -x, -y, -z );
+	}
+
+	Vector3 operator + ( const Vector3& vec3 ) const
+	{
+		return Vector3( x + vec3.x, y + vec3.y, z + vec3.z );
+	}
+
+	Vector3 operator - ( const Vector3& vec3 ) const
+	{
+		return Vector3( x - vec3.x, y - vec3.y, z - vec3.z );
+	}
+
+	Vector3 operator ^ ( const Vector3& vec3 ) const
+	{
+		return Vector3( y * vec3.z - z * vec3.y, z * vec3.x - x * vec3.z, x * vec3.y - y * vec3.x );
+	}
+
+	Vector3 operator * ( T fValue ) const
+	{
+		return Vector3( x * fValue, y * fValue, z * fValue );
+	}
+
+	Vector3 operator / ( T fValue ) const
+	{
+		return Vector3( x / fValue, y / fValue, z / fValue );
+	}
 	
 
-	friend Vector3 operator * ( float fValue, const Vector3& vec3 );
+	friend Vector3 operator * ( T fValue, const Vector3& vec3 )
+	{
+		return Vector3( fValue * vec3.x, fValue * vec3.y, fValue * vec3.z );
+	}
 
-	bool operator == ( const Vector3& vec3 ) const;
-	bool operator != ( const Vector3& vec3 ) const;
+	bool operator == ( const Vector3& vec3 ) const
+	{
+		return x == vec3.x && y == vec3.y && z == vec3.z;
+	}
+
+	bool operator != ( const Vector3& vec3 ) const
+	{
+		return x != vec3.x || y != vec3.y || z != vec3.z;
+	}
 public:
 	
 	union 
 	{
 		struct 
 		{
-			float x;
-			float y;
-			float z;
+			T x;
+			T y;
+			T z;
 		};
 
-		float raw[3];
+		T raw[3];
 	};
 };
 
@@ -206,5 +296,10 @@ public:
 		float raw[4];
 	};
 };
+
+typedef Vector2< int >		vector2i;
+typedef Vector2< float >	vector2f;
+typedef Vector3< int >		vector3i;
+typedef Vector3< float >	vector3f;
 
 #endif
