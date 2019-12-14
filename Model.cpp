@@ -9,7 +9,7 @@ Model::Model( const char* fileName )
 		return;
 	}
 
-	ifstream in;
+	std::ifstream in;
 	in.open( fileName, ifstream::in );
 
 	if( in.fail() )
@@ -33,7 +33,7 @@ Model::Model( const char* fileName )
 
 			for( int i = 0; i < 3; i++ )
 			{
-				iss >> v.raw[i];
+				iss >> v[i];
 			}
 
 			vVertexces.push_back( v );
@@ -76,48 +76,28 @@ bool Model::Init()
 
 void Model::Draw()
 {
-	 vector3i light_dir( 0, 0, -1 );
+	float *zBuffer = new float[ WIN_SIZE_X * WIN_SIZE_Y ];
+
+	for( int i = WIN_SIZE_X * WIN_SIZE_Y; i--; zBuffer[i] = -std::numeric_limits<float>::max() );
+
 	for( int i = 0; i < GetCountFace(); i++ )
 	{
-		vector<int> face = GetFace( i );
-		vector2i screen_coords[3];
-		vector3f world_coords[3];
+		vector<int> face = GetFace(i);
 
-		for( int j = 0; j <3; j++ )
+		vector3f pts[3];
+
+		for( int j = 0; j < 3; j++ )
 		{
-			vector3f v = GetVertex( face[j] );
-			screen_coords[j] = vector2i( ( v.x + 1.0f ) * WIN_SIZE_X / 2.0f, ( v.y + 1.0f ) * WIN_SIZE_Y / 2.0f );
-			world_coords[j] = v;
+			pts[j] = worldToscreen( GetVertex( face[j] ) );
 		}
 
-		vector3f temp = ( world_coords[2] - world_coords[0] ) ^ ( world_coords[1] - world_coords[0] );
-		vector3f n;
-		Vec3Norml( &n, &temp );
-
-		float intensity = n.x * light_dir.x + n.y * light_dir.y + n.z * light_dir.z;
-	
-		if( intensity > 0 )
-		{
-			m_Pixel->DrawTriangle( screen_coords[0], screen_coords[1], screen_coords[2], Color( intensity*255, intensity*255, intensity*255 ) );
-		}
+		m_Pixel->DrawTriangle( pts, zBuffer, Color( rand()%255, rand()%255, rand()%255 ) );
 	}
-// 	for( int i = 0; i < GetCountFace(); i++ )
-// 	{
-// 		vector<int> face = GetFace( i );
-// 		
-// 		for( int j = 0; j < 3; j++ )
-// 		{
-// 			vector3i v0 = GetVertex( face[j] );
-// 			vector3i v1 = GetVertex( face[(j+1)%3] );
-// 
-// 			int x0 = /*WIN_SIZE_X - */( v0.x + 1.0f ) * WIN_SIZE_X / 2.0f;
-// 			int y0 = /*WIN_SIZE_Y - */( v0.y + 1.0f ) * WIN_SIZE_Y / 2.0f;
-// 			int x1 = /*WIN_SIZE_X - */( v1.x + 1.0f ) * WIN_SIZE_X / 2.0f;
-// 			int y1 = /*WIN_SIZE_Y - */( v1.y + 1.0f ) * WIN_SIZE_Y / 2.0f;
-// 
-// 			m_Pixel->DrawBresenhamsLine2( x0, y0, x1, y1 );
-// 		}
-// 	}
+}
+
+vector3f Model::worldToscreen( vector3f v )
+{
+	return vector3f( int( ( v.x + 1.0f ) * WIN_SIZE_X / 2.0f + 0.5f ), int( ( v.y + 1.0f ) * WIN_SIZE_Y / 2.0f + 0.5f ), v.z );
 }
 
 vector3f Model::GetVertex( int idx )

@@ -4,23 +4,20 @@
 #include "Color.h"
 #include "Vector.h"
 
+//using namespace std;
+
 class Pixel
 {
 public:
 	Pixel( int width, int height, UINT bytesPerScanline, UINT bytesPerPixel, BYTE* pBits );
 	~Pixel();
 
-	void	SetColor( Color Color ) { m_Color = Color; }
-	void	DrawPixel( int x, int y );
-	void	DrawLine( vector2i p0, vector2i p1 );
-	void 	DrawLineDDA( int startX, int startY, int endX, int endY );
-	void	DrawRectangle( int startX, int startY, int endX, int endY );
-	void	DrawBresenhamsLine( int startX, int startY, int endX, int endY );
-	void	DrawBresenhamsLine2( int startX, int startY, int endX, int endY );
-	void	DrawTriangle( vector2i* pOut, Color color );
-	void	DrawTriangle( vector2i t0, vector2i t1, vector2i t2, Color color );
-
-	vector3f	Barycentric( vector2i* pOut, vector2i pV1 );
+	void		SetColor( Color Color ) { m_Color = Color; }
+	void		DrawPixel( int x, int y );
+	void		DrawLine( int x0, int y0, int x1, int y1, Color color );
+	void		DrawTriangle( vector3f *pts, float *zBuffer, Color color );
+	
+	vector3f	barycentric( vector3f A, vector3f B, vector3f C, vector3f P );
 	
 private:
 	Color	m_Color;

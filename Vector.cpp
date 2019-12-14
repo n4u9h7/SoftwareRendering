@@ -244,124 +244,124 @@
 	Vector4
 */
 //////////////////////////////////////////////////////////////////////////
-Vector4::Vector4( const float* pVec4 )
-{
-	x = pVec4[0];
-	y = pVec4[1];
-	z = pVec4[2];
-	w = pVec4[3];
-}
-
-Vector4::Vector4( const Vector4& rhs )
-{
-	x = rhs.x;
-	y = rhs.y;
-	z = rhs.z;
-	w = rhs.w;
-}
-
-Vector4::Vector4( float x, float y, float z, float w )
-{
-	this->x = x;
-	this->y = y;
-	this->z = z;
-	this->w = w;
-}
-
-Vector4::operator float* ()
-{
-	return (float * ) &x;
-}
-
-Vector4::operator const float* () const
-{
-	return ( const float * ) &x;
-}
-
-Vector4& Vector4::operator += ( const Vector4& vec4 )
-{
-	x += vec4.x;
-	y += vec4.y;
-	z += vec4.z;
-	w += vec4.w;
-
-	return *this;
-}
-
-Vector4& Vector4::operator -= ( const Vector4& vec4 )
-{
-	x -= vec4.x;
-	y -= vec4.y;
-	z -= vec4.z;
-	w -= vec4.w;
-
-	return *this;
-}
-
-Vector4& Vector4::operator *= ( float fValue )
-{
-	x *= fValue;
-	y *= fValue;
-	z *= fValue;
-	w *= fValue;
-
-	return *this;
-}
-
-Vector4& Vector4::operator /= ( float fValue )
-{
-	float fInv = 1.0f / fValue;
-
-	x *= fInv;
-	y *= fInv;
-	z *= fInv;
-	w *= fInv;
-
-	return *this;
-}
-
-Vector4 Vector4::operator + () const
-{
-	return *this;
-}
-
-Vector4 Vector4::operator - () const
-{
-	return Vector4( -x, -y, -z, -w );
-}
-
-Vector4 Vector4::operator + ( const Vector4& vec4 ) const
-{
-	return Vector4( x + vec4.x, y + vec4.y, z + vec4.z, w + vec4.w );
-}
-
-Vector4 Vector4::operator - ( const Vector4& vec4 ) const
-{
-	return Vector4( x - vec4.x, y - vec4.y, z - vec4.z, w - vec4.w );
-}
-
-Vector4 Vector4::operator * ( float fValue ) const
-{
-	return Vector4( x * fValue, y * fValue, z * fValue, w * fValue );
-}
-
-Vector4 Vector4::operator / ( float fValue ) const
-{
-	float fInv = 1.0f / fValue;
-	return Vector4( x * fInv, y * fInv, z * fInv, w * fInv );
-}
-
-Vector4 operator * ( float fValue, const Vector4& vec4 )
-{
-	return Vector4( fValue * vec4.x, fValue * vec4.y, fValue * vec4.z, fValue * vec4.w );
-}
-
-bool Vector4::operator == ( const Vector4& vec4 ) const
-{
-	return x == vec4.x && y == vec4.y && z == vec4.z && w == vec4.w;
-}
-
-bool Vector4::operator != ( const Vector4& vec4 ) const
-{
-	return x != vec4.x || y != vec4.y || z != vec4.z || w != vec4.w;
-}
+//Vector4::Vector4( const float* pVec4 )
+//{
+//	x = pVec4[0];
+//	y = pVec4[1];
+//	z = pVec4[2];
+//	w = pVec4[3];
+//}
+//
+//Vector4::Vector4( const Vector4& rhs )
+//{
+//	x = rhs.x;
+//	y = rhs.y;
+//	z = rhs.z;
+//	w = rhs.w;
+//}
+//
+//Vector4::Vector4( float x, float y, float z, float w )
+//{
+//	this->x = x;
+//	this->y = y;
+//	this->z = z;
+//	this->w = w;
+//}
+//
+//Vector4::operator float* ()
+//{
+//	return (float * ) &x;
+//}
+//
+//Vector4::operator const float* () const
+//{
+//	return ( const float * ) &x;
+//}
+//
+//Vector4& Vector4::operator += ( const Vector4& vec4 )
+//{
+//	x += vec4.x;
+//	y += vec4.y;
+//	z += vec4.z;
+//	w += vec4.w;
+//
+//	return *this;
+//}
+//
+//Vector4& Vector4::operator -= ( const Vector4& vec4 )
+//{
+//	x -= vec4.x;
+//	y -= vec4.y;
+//	z -= vec4.z;
+//	w -= vec4.w;
+//
+//	return *this;
+//}
+//
+//Vector4& Vector4::operator *= ( float fValue )
+//{
+//	x *= fValue;
+//	y *= fValue;
+//	z *= fValue;
+//	w *= fValue;
+//
+//	return *this;
+//}
+//
+//Vector4& Vector4::operator /= ( float fValue )
+//{
+//	float fInv = 1.0f / fValue;
+//
+//	x *= fInv;
+//	y *= fInv;
+//	z *= fInv;
+//	w *= fInv;
+//
+//	return *this;
+//}
+//
+//Vector4 Vector4::operator + () const
+//{
+//	return *this;
+//}
+//
+//Vector4 Vector4::operator - () const
+//{
+//	return Vector4( -x, -y, -z, -w );
+//}
+//
+//Vector4 Vector4::operator + ( const Vector4& vec4 ) const
+//{
+//	return Vector4( x + vec4.x, y + vec4.y, z + vec4.z, w + vec4.w );
+//}
+//
+//Vector4 Vector4::operator - ( const Vector4& vec4 ) const
+//{
+//	return Vector4( x - vec4.x, y - vec4.y, z - vec4.z, w - vec4.w );
+//}
+//
+//Vector4 Vector4::operator * ( float fValue ) const
+//{
+//	return Vector4( x * fValue, y * fValue, z * fValue, w * fValue );
+//}
+//
+//Vector4 Vector4::operator / ( float fValue ) const
+//{
+//	float fInv = 1.0f / fValue;
+//	return Vector4( x * fInv, y * fInv, z * fInv, w * fInv );
+//}
+//
+//Vector4 operator * ( float fValue, const Vector4& vec4 )
+//{
+//	return Vector4( fValue * vec4.x, fValue * vec4.y, fValue * vec4.z, fValue * vec4.w );
+//}
+//
+//bool Vector4::operator == ( const Vector4& vec4 ) const
+//{
+//	return x == vec4.x && y == vec4.y && z == vec4.z && w == vec4.w;
+//}
+//
+//bool Vector4::operator != ( const Vector4& vec4 ) const
+//{
+//	return x != vec4.x || y != vec4.y || z != vec4.z || w != vec4.w;
+//}

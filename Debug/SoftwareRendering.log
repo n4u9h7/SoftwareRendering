@@ -1,3 +1,15 @@
-﻿  GameManager.cpp
+﻿  Pixel.cpp
 cl : 명령줄 warning D9035: 'Gm' 옵션은 더 이상 사용되지 않으므로 이후 릴리스에서 제거될 예정입니다.
+C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Pixel.cpp(58,9): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Pixel.cpp(105,22): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Pixel.cpp(105,22): warning C4244:         with
+C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Pixel.cpp(105,22): warning C4244:         [
+C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Pixel.cpp(105,22): warning C4244:             T=float
+C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Pixel.cpp(105,22): warning C4244:         ]
+C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Pixel.cpp(105,17): warning C4244: '인수': 'T'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Pixel.cpp(105,17): warning C4244:         with
+C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Pixel.cpp(105,17): warning C4244:         [
+C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Pixel.cpp(105,17): warning C4244:             T=float
+C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Pixel.cpp(105,17): warning C4244:         ]
+Color.obj : warning LNK4075: '/EDITANDCONTINUE'이(가) '/SAFESEH' 사양으로 인해 무시됩니다.
   SoftwareRendering.vcxproj -> C:\Users\n4u9h7\Documents\GitHub\SoftwareRendering\Debug\SoftwareRendering.exe

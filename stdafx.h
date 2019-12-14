@@ -16,8 +16,13 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <cstdlib>
+#include <limits>
 
-// 윈도우 헤더파일 
+
+
+// 윈도우 헤더파일
+#define NOMINMAX
 #include <windows.h>
 
 // 디파인 

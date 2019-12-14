@@ -15,10 +15,11 @@ public:
 
 	bool				Init();
 	void				Draw();
-
+	
+	vector3f			worldToscreen( vector3f v );
 	vector3f			GetVertex( int idx );
 	vector<int>			GetFace( int idx );
-
+	
 	int					GetCountVertex();
 	int					GetCountFace();
 
